@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Services - GoCleeny{% endblock %}
+
+{% block content %}
+<section class="services-hero py-5 bg-light">
+    <div class="container text-center">
+        <h1 class="display-4">Our Cleaning Services</h1>
+        <p class="lead">Professional, eco-friendly cleaning solutions for every need</p>
+    </div>
+</section>
+
+<section class="services-list py-5">
+    <div class="container">
+        <div class="row">
+            {% for service in services %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/static/images/{{ service.name|lower|slugify }}.jpg" class="img-fluid rounded-start h-100" alt="{{ service.name }}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ service.name }}</h3>
+                                <p class="card-text">{{ service.description }}</p>
+                                <p class="card-text text-primary">Starting from £{{ service.price_per_hour }}/hr</p>
+                                <a href="{% url 'booking' %}" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No services available at the moment. Please check back later.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="special-offers py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Special Offers</h2>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">20% Off First Booking</h3>
+                        <p class="card-text">New customers get 20% off their first cleaning service!</p>
+                        <a href="{% url 'booking' %}" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cleaning-process py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Cleaning Process</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <h3 class="m-0">1</h3>
+                        </div>
+                        <h4 class="card-title">Book</h4>
+                        <p class="card-text">Schedule your cleaning service online or by phone.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <h3 class="m-0">2</h3>
+                        </div>
+                        <h4 class="card-title">Confirm</h4>
+                        <p class="card-text">We'll confirm your appointment and any special requirements.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <h3 class="m-0">3</h3>
+                        </div>
+                        <h4 class="card-title">Clean</h4>
+                        <p class="card-text">Our professional team arrives and performs the cleaning service.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <h3 class="m-0">4</h3>
+                        </div>
+                        <h4 class="card-title">Enjoy</h4>
+                        <p class="card-text">Relax in your clean, fresh space and provide feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="eco-friendly py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>Our Eco-Friendly Approach</h2>
+                <p>At GoCleeny, we're committed to using environmentally friendly cleaning products and methods that are safe for your family, pets, and the planet.</p>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item bg-transparent">Non-toxic, biodegradable cleaning solutions</li>
+                    <li class="list-group-item bg-transparent">Microfiber cloths to reduce paper waste</li>
+                    <li class="list-group-item bg-transparent">Energy-efficient equipment</li>
+                    <li class="list-group-item bg-transparent">Minimal water usage techniques</li>
+                </ul>
+                <p>Choose GoCleeny for a cleaner home and a cleaner planet.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="/static/images/eco-friendly.jpg" alt="Eco-friendly cleaning" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        How often should I schedule a cleaning service?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        It depends on your specific needs. For regular home maintenance, we recommend weekly or bi-weekly cleanings. For offices, daily or weekly cleanings are common. For special services like end of tenancy, these are typically one-time services.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Are your cleaning products safe for pets and children?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, all our cleaning products are eco-friendly and non-toxic, making them safe for homes with pets and children. We prioritize your family's health and safety.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Can I reschedule or cancel my booking?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, you can reschedule or cancel your booking through your account on our website. We ask for at least 24 hours' notice for any changes to allow us to adjust our schedule accordingly.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Experience the GoCleeny Difference?</h2>
+        <a href="{% url 'booking' %}" class="btn btn-light btn-lg">Book Your Cleaning Today</a>
+    </div>
+</section>
+{% endblock %}
+

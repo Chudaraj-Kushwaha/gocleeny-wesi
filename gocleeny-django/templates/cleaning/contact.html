@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - GoCleeny{% endblock %}
+
+{% block content %}
+<section class="contact-hero py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 text-center">Contact Us</h1>
+        <p class="lead text-center">We'd love to hear from you! Get in touch with our team.</p>
+    </div>
+</section>
+
+<section class="contact-info py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Get in Touch</h2>
+                        <p class="card-text">Have questions about our services or need a custom cleaning solution? Fill out the form and we'll get back to you as soon as possible.</p>
+                        
+                        <h3 class="mt-4">Contact Information</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-envelope me-2"></i>
+                                <a href="mailto:gocleeny@gmail.com">gocleeny@gmail.com</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-telephone me-2"></i>
+                                <a href="tel:+441234567890">+44 123 456 7890</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-geo-alt me-2"></i>
+                                123 Cleaning Street, London, UK
+                            </li>
+                        </ul>
+                        
+                        <h3 class="mt-4">Business Hours</h3>
+                        <ul class="list-unstyled">
+                            <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+                            <li>Saturday: 9:00 AM - 4:00 PM</li>
+                            <li>Sunday: Closed</li>
+                        </ul>
+                        
+                        <h3 class="mt-4">Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" class="me-3 text-dark"><i class="bi bi-facebook fs-4"></i></a>
+                            <a href="#" class="me-3 text-dark"><i class="bi bi-twitter fs-4"></i></a>
+                            <a href="#" class="me-3 text-dark"><i class="bi bi-instagram fs-4"></i></a>
+                            <a href="#" class="me-3 text-dark"><i class="bi bi-linkedin fs-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Send Us a Message</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.name.id_for_label }}" class="form-label">Your Name</label>
+                                {{ form.name|add_class:"form-control" }}
+                                {% if form.name.errors %}
+                                <div class="text-danger">{{ form.name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Your Email</label>
+                                {{ form.email|add_class:"form-control" }}
+                                {% if form.email.errors %}
+                                <div class="text-danger">{{ form.email.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.message.id_for_label }}" class="form-label">Your Message</label>
+                                {{ form.message|add_class:"form-control" }}
+                                {% if form.message.errors %}
+                                <div class="text-danger">{{ form.message.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="privacyCheck" required>
+                                <label class="form-check-label" for="privacyCheck">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">privacy policy</a></label>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="map py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Find Us</h2>
+        <div class="ratio ratio-16x9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.47340002653!2d-0.24168120642536509!3d51.52855824164916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sus!4v1656543745932!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Privacy Policy Modal -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>GoCleeny is committed to protecting your personal information. By submitting this contact form, you consent to the collection and processing of your personal data for communication purposes.</p>
+                
+                <p>We will use the information you provide to respond to your inquiry and provide you with the information or services you've requested.</p>
+                
+                <p>Your information will be stored securely and will only be accessible to authorized personnel who need to respond to your inquiry. We will retain your information for a period of 12 months after our last communication.</p>
+                
+                <p>You have the right to request access to, rectification, or erasure of your personal data at any time by contacting us at gocleeny@gmail.com.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

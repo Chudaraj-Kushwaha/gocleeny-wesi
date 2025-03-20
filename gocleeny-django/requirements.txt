@@ -1,0 +1,5 @@
+Django==4.1.3
+upstash-redis
+django-widget-tweaks
+Pillow
+

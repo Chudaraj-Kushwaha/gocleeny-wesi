@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-4">Eco-Friendly Cleaning for a Spotless Home</h1>
+                <p class="lead">Professional cleaning services that care for your home and the environment.</p>
+                <a href="{% url 'booking' %}" class="btn btn-light btn-lg mt-3">Book a Cleaning</a>
+            </div>
+            <div class="col-md-6">
+                <img src="/static/images/cleaning-hero.jpg" alt="Eco-friendly cleaning" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Choose GoCleeny?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-leaf fs-1 text-success mb-3"></i>
+                        <h3 class="card-title">Eco-Friendly</h3>
+                        <p class="card-text">We use environmentally friendly cleaning products that are safe for your family and pets.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-shield-check fs-1 text-primary mb-3"></i>
+                        <h3 class="card-title">Professional</h3>
+                        <p class="card-text">Our trained and vetted cleaning professionals deliver exceptional service every time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-clock fs-1 text-warning mb-3"></i>
+                        <h3 class="card-title">Reliable</h3>
+                        <p class="card-text">We're punctual, consistent, and committed to your satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-preview py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="/static/images/home-cleaning.jpg" class="card-img-top" alt="Home Cleaning">
+                    <div class="card-body">
+                        <h3 class="card-title">Home Cleaning</h3>
+                        <p class="card-text">Regular cleaning services to keep your home spotless.</p>
+                        <p class="text-primary">Starting from £15/hr</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="/static/images/office-cleaning.jpg" class="card-img-top" alt="Office Cleaning">
+                    <div class="card-body">
+                        <h3 class="card-title">Office Cleaning</h3>
+                        <p class="card-text">Professional cleaning for your workplace.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="/static/images/end-of-tenancy.jpg" class="card-img-top" alt="End of Tenancy">
+                    <div class="card-body">
+                        <h3 class="card-title">End of Tenancy</h3>
+                        <p class="card-text">Deep cleaning when moving in or out of a property.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="/static/images/airbnb-cleaning.jpg" class="card-img-top" alt="Airbnb Cleaning">
+                    <div class="card-body">
+                        <h3 class="card-title">Airbnb Cleaning</h3>
+                        <p class="card-text">Specialized cleaning for short-term rentals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'services' %}" class="btn btn-primary">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Customers Say</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="card-text">"GoCleeny has transformed my home! Their eco-friendly approach means I can have a clean home without worrying about harsh chemicals."</p>
+                        <p class="card-text"><strong>- Sarah J.</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="card-text">"The team is professional, thorough, and always on time. I've been using their services for over a year and couldn't be happier."</p>
+                        <p class="card-text"><strong>- Michael T.</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="card-text">"I hired GoCleeny for an end of tenancy cleaning and got my full deposit back! Their attention to detail is impressive."</p>
+                        <p class="card-text"><strong>- Emma L.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready for a Cleaner, Greener Home?</h2>
+        <p class="lead mb-4">First-time customers get 20% off their first booking!</p>
+        <a href="{% url 'booking' %}" class="btn btn-light btn-lg">Book Now</a>
+    </div>
+</section>
+{% endblock %}
+

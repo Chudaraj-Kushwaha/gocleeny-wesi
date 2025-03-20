@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block title %}Careers - GoCleeny{% endblock %}
+
+{% block content %}
+<section class="careers-hero py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-4">Join Our Team</h1>
+                <p class="lead">Be part of our mission to provide eco-friendly cleaning services</p>
+            </div>
+            <div class="col-md-6">
+                <img src="/static/images/careers.jpg" alt="GoCleeny Careers" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-join py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Join GoCleeny?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-cash-coin fs-1 text-success mb-3"></i>
+                        <h3 class="card-title">Competitive Pay</h3>
+                        <p class="card-text">We offer above-market rates and performance bonuses to reward your hard work.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calendar-check fs-1 text-primary mb-3"></i>
+                        <h3 class="card-title">Flexible Schedule</h3>
+                        <p class="card-text">Choose shifts that work for your lifestyle and maintain a healthy work-life balance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-graph-up-arrow fs-1 text-warning mb-3"></i>
+                        <h3 class="card-title">Growth Opportunities</h3>
+                        <p class="card-text">We promote from within and provide training to help you advance your career.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="open-positions py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Open Positions</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Professional Cleaner</h3>
+                        <p class="card-text text-muted">Full-time / Part-time</p>
+                        <p class="card-text">Join our team of professional cleaners to provide exceptional cleaning services to our clients. Experience preferred but not required - we provide training!</p>
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Reliable and punctual</li>
+                            <li>Attention to detail</li>
+                            <li>Customer service oriented</li>
+                            <li>Ability to work independently</li>
+                            <li>Valid ID and right to work in the UK</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="#application-form" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Team Leader</h3>
+                        <p class="card-text text-muted">Full-time</p>
+                        <p class="card-text">Lead a team of professional cleaners and ensure high-quality service delivery to our clients. Previous cleaning and leadership experience required.</p>
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Minimum 2 years of professional cleaning experience</li>
+                            <li>Leadership skills and experience</li>
+                            <li>Excellent communication skills</li>
+                            <li>Problem-solving abilities</li>
+                            <li>Valid driver's license</li>
+                            <li>Valid ID and right to work in the UK</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="#application-form" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="application-form" class="application-form py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Apply Now</h2>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.name.id_for_label }}" class="form-label">Full Name</label>
+                                {{ form.name|add_class:"form-control" }}
+                                {% if form.name.errors %}
+                                <div class="text-danger">{{ form.name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                                    {{ form.email|add_class:"form-control" }}
+                                    {% if form.email.errors %}
+                                    <div class="text-danger">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
+                                    {{ form.phone|add_class:"form-control" }}
+                                    {% if form.phone.errors %}
+                                    <div class="text-danger">{{ form.phone.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.experience.id_for_label }}" class="form-label">Experience & Skills</label>
+                                {{ form.experience|add_class:"form-control" }}
+                                {% if form.experience.errors %}
+                                <div class="text-danger">{{ form.experience.errors }}</div>
+                                {% endif %}
+                                <small class="text-muted">Please describe your relevant experience, skills, and why you want to join GoCleeny.</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.resume.id_for_label }}" class="form-label">Upload Resume/CV (optional)</label>
+                                {{ form.resume|add_class:"form-control" }}
+                                {% if form.resume.errors %}
+                                <div class="text-danger">{{ form.resume.errors }}</div>
+                                {% endif %}
+                                <small class="text-muted">Accepted formats: PDF, DOC, DOCX (Max size: 5MB)</small>
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="privacyCheck" required>
+                                <label class="form-check-label" for="privacyCheck">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">privacy policy</a></label>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Submit Application</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Privacy Policy Modal -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>GoCleeny is committed to protecting your personal information. By submitting this application, you consent to the collection and processing of your personal data for recruitment purposes.</p>
+                
+                <p>We will use the information you provide to assess your suitability for the role you've applied for and to contact you regarding your application.</p>
+                
+                <p>Your information will be stored securely and will only be accessible to authorized personnel involved in the recruitment process. We will retain your information for a period of 6 months after the recruitment process has ended.</p>
+                
+                <p>You have the right to request access to, rectification, or erasure of your personal data at any time by contacting us at gocleeny@gmail.com.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

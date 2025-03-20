@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}Book a Cleaning - GoCleeny{% endblock %}
+
+{% block content %}
+<section class="booking-hero py-5 bg-light">
+    <div class="container text-center">
+        <h1 class="display-4">Book a Cleaning Service</h1>
+        <p class="lead">Schedule your eco-friendly cleaning service in minutes</p>
+    </div>
+</section>
+
+<section class="booking-form py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            <div class="mb-4">
+                                <h3>Select a Service</h3>
+                                <div class="row">
+                                    {% for service in services %}
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="service" id="service{{ service.id }}" value="{{ service.id }}" {% if forloop.first %}checked{% endif %}>
+                                            <label class="form-check-label" for="service{{ service.id }}">
+                                                <strong>{{ service.name }}</strong> - £{{ service.price_per_hour }}/hr
+                                            </label>
+                                        </div>
+                                        <small class="text-muted d-block mt-1">{{ service.description|truncatechars:100 }}</small>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h3>Your Information</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.name.id_for_label }}" class="form-label">Name</label>
+                                        {{ form.name|add_class:"form-control" }}
+                                        {% if form.name.errors %}
+                                        <div class="text-danger">{{ form.name.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                                        {{ form.email|add_class:"form-control" }}
+                                        {% if form.email.errors %}
+                                        <div class="text-danger">{{ form.email.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
+                                    {{ form.phone|add_class:"form-control" }}
+                                    {% if form.phone.errors %}
+                                    <div class="text-danger">{{ form.phone.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h3>Cleaning Details</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.date.id_for_label }}" class="form-label">Preferred Date</label>
+                                        {{ form.date|add_class:"form-control" }}
+                                        {% if form.date.errors %}
+                                        <div class="text-danger">{{ form.date.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.time.id_for_label }}" class="form-label">Preferred Time</label>
+                                        {{ form.time|add_class:"form-control" }}
+                                        {% if form.time.errors %}
+                                        <div class="text-danger">{{ form.time.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="{{ form.notes.id_for_label }}" class="form-label">Additional Notes</label>
+                                    {{ form.notes|add_class:"form-control" }}
+                                    {% if form.notes.errors %}
+                                    <div class="text-danger">{{ form.notes.errors }}</div>
+                                    {% endif %}
+                                    <small class="text-muted">Please provide any specific requirements or instructions for your cleaning service.</small>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">terms and conditions</a></label>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Terms and Conditions Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Booking and Cancellation Policy</h6>
+                <p>Bookings can be cancelled or rescheduled with at least 24 hours notice. Late cancellations may incur a fee.</p>
+                
+                <h6>Payment Terms</h6>
+                <p>Payment is due at the time of service unless otherwise arranged. We accept credit/debit cards and bank transfers.</p>
+                
+                <h6>Service Guarantee</h6>
+                <p>If you're not satisfied with our service, please let us know within 24 hours and we'll re-clean the areas in question.</p>
+                
+                <h6>Privacy Policy</h6>
+                <p>We respect your privacy and will only use your personal information to administer your account and provide the services you have requested from us.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
